@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.9.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TubeStatus" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="68946c98-bde1-4d60-8b13-2095259309f3">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="tubestatusDataAdapter.xml"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver-pro/"/>
+	<property name="ireport.jasperserver.user" value="superuser"/>
+	<property name="ireport.jasperserver.report.resource" value="/public/Marketing/Breakfast_Club/TubeStatus_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/public/Marketing/Breakfast_Club/TubeStatus"/>
+	<property name="net.sf.jasperreports.data.adapter" value="tubestatusDataAdapter.xml"/>
+	<queryString language="json">
+		<![CDATA[]]>
+	</queryString>
+	<field name="name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="name"/>
+	</field>
+	<field name="statusSeverity" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="lineStatuses.statusSeverity"/>
+	</field>
+	<field name="statusSeverityDescription" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="lineStatuses.statusSeverityDescription"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="73" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="80" height="73" uuid="06ae054f-f7f3-4cdb-b28d-b3f416b1e767"/>
+				<imageExpression><![CDATA[net.sf.jasperreports.renderers.BatikRenderer.getInstanceFromLocation($P{JASPER_REPORTS_CONTEXT}, "https://upload.wikimedia.org/wikipedia/commons/4/41/Underground.svg")]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="80" height="20" uuid="593e6ce2-58f5-4dfa-a024-9acdafbd4a80"/>
+				<textElement>
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="0" width="105" height="20" uuid="b4180816-ea8b-46cf-80b4-f55f3e1ec340"/>
+				<textElement>
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status Severity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="165" height="20" uuid="36c20cf4-8b2d-4118-b76b-f68ebc240d86"/>
+				<textElement>
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status Severity Description]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="5" width="80" height="23" forecolor="#2811F5" uuid="1e2567b0-ad70-4d22-8ed8-164b46f2f385">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="95" y="5" width="105" height="23" uuid="ff1f2449-8177-475e-8c37-824e2b3e2551"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{statusSeverity}.replace( '[', ' ').replace( ']', ' ').trim())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="5" width="165" height="23" uuid="088a6d3b-0bb4-4bcf-9e3e-3d19f5173a9e"/>
+				<textElement>
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{statusSeverityDescription}.replace( '[', ' ').replace( ']', ' ').replace( '\"', ' ').trim()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="380" y="5" width="20" height="20" uuid="3ad7db1d-fae0-43b2-a56f-fdd2db4906b7">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<printWhenExpression><![CDATA[IF(Integer.parseInt($F{statusSeverity}.replace( '[', ' ').replace( ']', ' ').trim())<7,true,false)]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA[net.sf.jasperreports.renderers.BatikRenderer.getInstanceFromLocation($P{JASPER_REPORTS_CONTEXT}, "https://upload.wikimedia.org/wikipedia/commons/1/13/Disc_Plain_red.svg")]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="380" y="5" width="20" height="20" uuid="5d2a5dcc-32bb-40d2-a786-3aa064e16670">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<printWhenExpression><![CDATA[IF(AND(Integer.parseInt($F{statusSeverity}.replace( '[', ' ').replace( ']', ' ').trim())<10,Integer.parseInt($F{statusSeverity}.replace( '[', ' ').replace( ']', ' ').trim())>6),true,false)]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA[net.sf.jasperreports.renderers.BatikRenderer.getInstanceFromLocation($P{JASPER_REPORTS_CONTEXT}, "https://upload.wikimedia.org/wikipedia/commons/4/43/Disc_Plain_yellow.svg")]]></imageExpression>
+			</image>
+			<line>
+				<reportElement positionType="Float" x="0" y="1" width="400" height="1" uuid="7d154926-02c8-494e-863c-561577f0d1f7">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+			</line>
+			<image>
+				<reportElement x="380" y="5" width="20" height="20" uuid="b1f2c69e-b062-43d9-95be-c6a778f7c546">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<printWhenExpression><![CDATA[IF(Integer.parseInt($F{statusSeverity}.replace( '[', ' ').replace( ']', ' ').trim())==10,true,false)]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA[net.sf.jasperreports.renderers.BatikRenderer.getInstanceFromLocation($P{JASPER_REPORTS_CONTEXT}, "https://upload.wikimedia.org/wikipedia/commons/7/74/Disc_Plain_green.svg")]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>
